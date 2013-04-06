@@ -5,9 +5,9 @@
 		<Require feature="views" />
 		<Require feature="locked-domain" />
 	</ModulePrefs>
-	<Content type="html"><![CDATA[     
+	<Content type="html"><![CDATA[
 
-<link rel="stylesheet" href="https://dl.dropbox.com/u/6119492/hmaps/style.css" />
+<link rel="stylesheet" href="https://dl.dropbox.com/u/4716992/hangout/Hangout-Maps/style.css" />
 
 
 <script src="https://hangoutsapi.talkgadget.google.com/hangouts/api/hangout.js?v=1.0" ></script>
@@ -15,7 +15,7 @@
 
 <div id="map_canvas"></div>
 
-<script src="https://dl.dropbox.com/u/6119492/hmaps/script.js"></script>
+<script src="https://dl.dropbox.com/u/4716992/hangout/Hangout-Maps/script.js"></script>
 
 ]]>
 </Content>
