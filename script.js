@@ -72,7 +72,13 @@ function initialize() {
     }
   });
   drawingManager.setMap(map);
-  
+
+  google.maps.event.addListener(drawingManager, 'markercomplete', function(marker) {
+      console.log('added some markers');
+      console.log(marker.getPosition());
+
+   });
+
   map.controls[google.maps.ControlPosition.LEFT_TOP].push(new LocationControl(map));
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(new SearchField(map));
 
@@ -81,22 +87,22 @@ function initialize() {
   // cloudLayer.setMap(map);
 
   gapi.hangout.data.onStateChanged.add(
-    function (event) { 
-      console.log("State changed:")
-      
-      var id, latlng; 
+    function (event) {
+      console.log("State changed:");
 
-        for (var i = 0; i < event.addedKeys.length; i++) { 
+      var id, latlng;
+
+        for (var i = 0; i < event.addedKeys.length; i++) {
           id = event.addedKeys[i].key;  // The key is the unique participant ID of the other participant
           value = JSON.parse(event.addedKeys[i].value);  //Also see above in the shareLocation function
           console.log(event.addedKeys[i]);
-          
-          
 
-          // Add marker  
+
+
+          // Add marker
           //createLocationMarker(id, value.location, map);
 
-        }   
+        }
   });
 
 }
@@ -117,7 +123,7 @@ function SearchField(map) {
   var marker = new google.maps.Marker({
     map: map
   });
- 
+
   google.maps.event.addListener(autocomplete, 'place_changed', function() {
     infowindow.close();
     var place = autocomplete.getPlace();
@@ -148,7 +154,7 @@ function SearchField(map) {
     var rating = (place.rating) ? place.rating+' - ':'';
     var phone = (place.formatted_phone_number) ? place.formatted_phone_number:'';
     var website = (place.website) ? '<br><a href=\"'+place.website+'\" target=\"_blank\">'+place.website+'</a>':'';
-     
+
     infowindow.setContent('<div><b>' + place.name + '</b><br>'+ rating +'<a href=\"'+place.url+'\" target=\"_blank\">more info</a><br>' + place.formatted_address + "<br>" + phone + website);
     infowindow.open(map, marker);
   });
@@ -160,7 +166,7 @@ function SearchField(map) {
 function LocationControl(map) {
 
   var controlDiv = document.createElement('div');
-  
+
   // Control container DIV
   var myLocationControl = document.createElement('div');
   myLocationControl.setAttribute("id", "my-location-control");
@@ -244,7 +250,7 @@ function LocationControl(map) {
           // Show location marker
           //myloc.setPosition(initialLocation);
           //myloc.setVisible(true);
-          
+
           //mylocLat.icon = myLocationCanvas.toDataURL();
           mylocLat.setPosition(initialLocation);
           mylocLat.setVisible(true);
@@ -277,7 +283,7 @@ function LocationControl(map) {
           // Push location to the shared state
           var now = new Date();
           gapi.hangout.data.setValue(gapi.hangout.getParticipantId(), JSON.stringify({location: initialLocation, offset: now.getTimezoneOffset()}));
-          
+
 
         }, function() {
           handleNoGeolocation(browserSupportFlag);
@@ -299,7 +305,7 @@ function LocationControl(map) {
 }
 
 function init() {
-  // When API is ready...                                                         
+  // When API is ready...
   gapi.hangout.onApiReady.add(
       function(eventObj) {
         if (eventObj.isApiReady) {
@@ -308,5 +314,5 @@ function init() {
       });
 }
 
-// Wait for gadget to load.                                                       
+// Wait for gadget to load.
 gadgets.util.registerOnLoadHandler(init);
