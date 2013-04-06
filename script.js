@@ -74,8 +74,9 @@ function initialize() {
   drawingManager.setMap(map);
 
   google.maps.event.addListener(drawingManager, 'markercomplete', function(marker) {
-      console.log('added some markers');
-      console.log(marker.getPosition());
+      console.log('added some markers2');
+      console.log(marker.getPosition().toString());
+      gapi.hangout.data.submitDelta( {marker: marker.getPosition().toString()} );
 
    });
 
