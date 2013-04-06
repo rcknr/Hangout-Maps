@@ -90,7 +90,29 @@ function initialize() {
   gapi.hangout.data.onStateChanged.add(
     function (event) {
       console.log("State changed:");
+      maskerStr = gapi.hangout.data.getState();
+      console.log(maskerStr.marker);
 
+      var coords = maskerStr.marker.substring(1, maskerStr.marker.length - 1).split(', ');
+
+      var myLatlng = new google.maps.LatLng(coords[0], coords[1]);
+      var marker = new google.maps.Marker({
+          position: myLatlng,
+          title:"Hello World!"
+      });
+      console.log('test');
+      console.log(marker);
+      console.log(marker.setMap(map));
+
+/*
+      var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
+      var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+
+
+      // To add the marker to the map, call setMap();
+
+*/
       var id, latlng;
 
         for (var i = 0; i < event.addedKeys.length; i++) {
