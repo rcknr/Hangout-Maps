@@ -32,7 +32,7 @@ function initialize() {
     ]
   };
 
-  var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+  map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
 
   // Initializing Drawing tools
   var drawingManager = new google.maps.drawing.DrawingManager({
@@ -100,9 +100,10 @@ function initialize() {
           position: myLatlng,
           title:"Hello World!"
       });
-      console.log('test');
-      console.log(marker);
-      console.log(marker.setMap(map));
+      //console.log('test');
+      //console.log(marker);
+      //console.log(marker.setMap(map));
+      marker.setMap(map);
 
 /*
       var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
@@ -336,6 +337,40 @@ function init() {
         }
       });
 }
+
+/*checkins from foursquare*/
+function Places() {
+    // Data
+    var self = this;
+    self.places = ko.observableArray([]);
+    self.coord = ko.observable('40.7,-74');
+
+    self.token = 'G4ADOMFGJXZLLSSWAPPQRBOIFFDHDKSVOTSRHIUQIVKKISXV';
+    self.url = 'https://api.foursquare.com/v2/venues/explore?ll=' + self.coord() + '&oauth_token=' + self.token + '&v=20130407';
+    $.ajax({
+        url: self.url,
+        type: 'GET',
+        success: function(res) {
+            console.log(res);
+            self.places(res.response.groups[0].items);
+        }
+    });
+
+    self.addMarker = function(obj) {
+        console.log(obj.venue.location);
+        var myLatlng = new google.maps.LatLng(obj.venue.location.lat, obj.venue.location.lng);
+        var marker = new google.maps.Marker({
+            position: myLatlng,
+            title: obj.venue.name
+        });
+        marker.setMap(map);
+        map.setCenter(marker.getPosition());
+
+        gapi.hangout.data.submitDelta( {marker: marker.getPosition().toString(), title: obj.venue.name} );
+    }
+}
+
+ko.applyBindings(new Places());
 
 // Wait for gadget to load.
 gadgets.util.registerOnLoadHandler(init);
