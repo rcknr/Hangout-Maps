@@ -76,7 +76,25 @@ html, body {
   overflow-y: scroll;
   height: 600px;
 }
+
+.suggestions ul {
+  list-style: none;
+  margin: 0;
+  padding: 13px;
+}
+
+.suggestions li {
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.suggestions li span {
+  font-size: 11px;
+  color: #999;
+}
+
 .place_title{
   cursor: pointer;
-  text-decoration: underline;
+  text-decoration: none;
+  font-weight: bold;
 }
