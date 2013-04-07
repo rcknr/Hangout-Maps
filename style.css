@@ -65,8 +65,8 @@ html, body {
 }
 .suggestions {
   position: absolute;
-  left: 30px;
-  top: 20px;
+  right: 20px;
+  top: 37px;
   background-color: rgba(229,229,229,0.75);
   padding-left: 0;
   padding-right: 10px;
