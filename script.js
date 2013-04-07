@@ -364,6 +364,7 @@ function Places() {
             title: obj.venue.name
         });
         marker.setMap(map);
+        map.setCenter(marker.getPosition());
 
         gapi.hangout.data.submitDelta( {marker: marker.getPosition().toString(), title: obj.venue.name} );
     }

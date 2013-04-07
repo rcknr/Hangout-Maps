@@ -65,13 +65,16 @@ html, body {
 }
 .suggestions {
   position: absolute;
-  left: 0;
+  left: 30px;
   top: 20px;
   background-color: rgba(229,229,229,0.75);
-  padding: 20px;
+  padding-left: 0;
+  padding-right: 10px;
   text-align: justify;
   text-rendering: optimizeLegibility;
   width: 200px;
+  overflow-y: scroll;
+  height: 600px;
 }
 .place_title{
   cursor: pointer;
