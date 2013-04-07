@@ -73,3 +73,7 @@ html, body {
   text-rendering: optimizeLegibility;
   width: 200px;
 }
+.place_title{
+  cursor: pointer;
+  text-decoration: underline;
+}

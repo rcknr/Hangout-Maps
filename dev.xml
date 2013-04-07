@@ -18,7 +18,7 @@
 <div class="suggestions">
     <ul data-bind="foreach: places">
         <li>
-            <div data-bind="text: venue.name"> </div>
+            <div data-bind="text: venue.name, click: $parent.addMarker" style="place_title"> </div>
             rating: <span data-bind="text: venue.rating"> </span><br />
             <span data-bind="text: venue.likes.summary"> </span><br />
             <span data-bind="text: venue.location.address"> </span><br />
