@@ -2,12 +2,12 @@
   border-radius: 3px;
   -moz-border-radius: 3px;
   background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ddd));
-  background: -moz-linear-gradient(top, #fff, #ddd);  
+  background: -moz-linear-gradient(top, #fff, #ddd);
   border: 1px solid #bbb;
 }
 
 .button:active {
-	background: -webkit-gradient(linear, left top, left bottom, from(#aaa), to(#333)); 
+	background: -webkit-gradient(linear, left top, left bottom, from(#aaa), to(#333));
 	background: -moz-linear-gradient(bottom, #ddd, #aaa); }
 
 html, body {
@@ -62,4 +62,14 @@ html, body {
 
 .wait {
   background-image: url('//maps.gstatic.com/mapfiles/my_location2.png');
+}
+.suggestions {
+  position: absolute;
+  left: 0;
+  top: 20px;
+  background-color: rgba(229,229,229,0.75);
+  padding: 20px;
+  text-align: justify;
+  text-rendering: optimizeLegibility;
+  width: 200px;
 }

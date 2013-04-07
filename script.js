@@ -337,5 +337,27 @@ function init() {
       });
 }
 
+/*checkins from foursquare*/
+function Places() {
+    // Data
+    var self = this;
+    self.places = ko.observableArray([]);
+    self.coord = ko.observable('40.7,-74');
+
+    self.token = 'G4ADOMFGJXZLLSSWAPPQRBOIFFDHDKSVOTSRHIUQIVKKISXV';
+    self.url = 'https://api.foursquare.com/v2/venues/explore?ll=' + self.coord() + '&oauth_token=' + self.token + '&v=20130407';
+    alert('test');
+    $.ajax({
+        url: self.url,
+        type: 'GET',
+        success: function(res) {
+            console.log(res);
+            self.places(res.response.groups[0].items);
+        }
+    });
+}
+
+ko.applyBindings(new Places());
+
 // Wait for gadget to load.
 gadgets.util.registerOnLoadHandler(init);

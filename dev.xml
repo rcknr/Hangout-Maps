@@ -9,11 +9,23 @@
 
 <link rel="stylesheet" href="https://dl.dropbox.com/u/4716992/hangout/Hangout-Maps/style.css" />
 
-
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js" ></script>
 <script src="https://hangoutsapi.talkgadget.google.com/hangouts/api/hangout.js?v=1.0" ></script>
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=drawing,places,weather"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/2.2.0/knockout-min.js" ></script>
 
 <div id="map_canvas"></div>
+<div class="suggestions">
+    <ul data-bind="foreach: places">
+        <li>
+            <div data-bind="text: venue.name"> </div>
+            rating: <span data-bind="text: venue.rating"> </span><br />
+            <span data-bind="text: venue.likes.summary"> </span><br />
+            <span data-bind="text: venue.location.address"> </span><br />
+
+        </li>
+    </ul>
+</div>
 
 <script src="https://dl.dropbox.com/u/4716992/hangout/Hangout-Maps/script.js"></script>
 
