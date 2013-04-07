@@ -1,8 +1,8 @@
 function initialize() {
 
   var mapOptions = {
-    center: new google.maps.LatLng(38.479395,27.158203),
-    zoom: 3,
+    center: new google.maps.LatLng(37.76040136229719, -122.41928100585938),
+    zoom: 10,
     minZoom: 2,
     maxZoom: 19,
     streetViewControl: false,
@@ -343,7 +343,7 @@ function Places() {
     // Data
     var self = this;
     self.places = ko.observableArray([]);
-    self.coord = ko.observable('40.7,-74');
+    self.coord = ko.observable('37.76040136229719, -122.41928100585938');
 
     self.token = 'G4ADOMFGJXZLLSSWAPPQRBOIFFDHDKSVOTSRHIUQIVKKISXV';
     self.url = 'https://api.foursquare.com/v2/venues/explore?ll=' + self.coord() + '&oauth_token=' + self.token + '&v=20130407';
